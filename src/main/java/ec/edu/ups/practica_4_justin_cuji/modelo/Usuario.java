@@ -9,14 +9,15 @@ import java.util.ArrayList;
 //Clase que representa a un usuario en la biblioteca, heredando de la clase abstracta Persona.
 
 public class Usuario extends Persona {
+    private static int contadorID = 1;
     private String correo;
     private ArrayList<Prestamo> listaPrestamos;
 // Constructor que inicializa los atributos de la clase base y los propios de Usuario
-
     public Usuario(String nombre, String identificacion, String correo) {
         super(nombre, identificacion);
         this.correo = correo;
         this.listaPrestamos = new ArrayList<>();
+        this.identificacion = "ID_" + contadorID++;
     }
 
     @Override
@@ -37,16 +38,15 @@ public class Usuario extends Persona {
     }
 }
 //método para devolver el libro//
-    public void devolverLibro(Libro libro) {
+    public boolean devolverLibro(Libro libro) {
+        // Lógica para devolver el libro por parte del usuario
         for (Prestamo prestamo : listaPrestamos) {
             if (prestamo.getLibro().equals(libro) && prestamo.esPrestamoVigente()) {
-                libro.devolver();
-                listaPrestamos.remove(prestamo);
-                System.out.println("Devolución exitosa. Libro marcado como disponible.");
-                return;
+                listaPrestamos.remove(prestamo); // Remover préstamo
+                return true; // Devolución exitosa
             }
         }
-        System.out.println("Error: El usuario no tiene el libro prestado o el préstamo ha expirado.");
+        return false; // Si el libro no se pudo devolver
     }
     // Método para agregar un préstamo a la lista de préstamos del usuario//
     public void agregarPrestamo(Prestamo prestamo) {
@@ -61,5 +61,22 @@ public class Usuario extends Persona {
         return identificacion;
     }
     
+    public Libro obtenerLibroPrestado(String tituloLibro) {
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getLibro().getTitulo().equalsIgnoreCase(tituloLibro) && prestamo.esPrestamoVigente()) {
+                return prestamo.getLibro();
+            }
+        }
+        return null; // Si no se encuentra el libro prestado por el usuario
+    }
+    public boolean eliminarPrestamo(Libro libro) {
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getLibro().equals(libro)) {
+                listaPrestamos.remove(prestamo);
+                return true; // Indica que se eliminó el préstamo
+            }
+        }
+        return false; // Indica que no se encontró el préstamo para eliminar
+    }
 
 }

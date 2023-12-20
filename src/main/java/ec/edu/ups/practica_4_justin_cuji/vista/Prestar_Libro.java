@@ -259,11 +259,12 @@ public class Prestar_Libro extends javax.swing.JInternalFrame {
             // Si el ID no está presente, muestra un mensaje de error
             JOptionPane.showMessageDialog(this, "Ingrese un ID válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnPrestarLibroActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.limpiarCampos();
         this.setVisible(false);
+        this.limpiarCampos();
         ((Principal) getTopLevelAncestor()).mostrarBotones(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 

@@ -5,21 +5,28 @@
 package ec.edu.ups.practica_4_justin_cuji.vista;
 
 import ec.edu.ups.practica_4_justin_cuji.Principal;
+import ec.edu.ups.practica_4_justin_cuji.controlador.Libro_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
+import ec.edu.ups.practica_4_justin_cuji.modelo.Libro;
+import ec.edu.ups.practica_4_justin_cuji.modelo.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author davidvargas
  */
 public class Devolver_Libro extends javax.swing.JInternalFrame {
+
     private Usuario_Controlador usuario_Controlador;
-    
+    private Libro_Controlador libro_Controlador;
+
     /**
      * Creates new form Devolver_Libro
      */
-    public Devolver_Libro(Usuario_Controlador usuario_Controlador) {
+    public Devolver_Libro(Usuario_Controlador usuario_Controlador, Libro_Controlador libro_Controlador) {
         initComponents();
         this.usuario_Controlador = usuario_Controlador;
+        this.libro_Controlador = libro_Controlador;
     }
 
     /**
@@ -33,11 +40,11 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtTitulo = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
         btnDevolver = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -66,8 +73,6 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
 
         txtTitulo.setToolTipText("Titulo del libro a devolver");
 
-        txtId.setToolTipText("ID del Usuario que va a devolver el libro");
-
         btnDevolver.setText("Devolver");
         btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,48 +96,50 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Titulo");
 
-        jLabel2.setText("ID");
+        txtId.setToolTipText("Id del usuario que pidio el libro");
+
+        jLabel2.setText("Id");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
                         .addComponent(btnDevolver)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar))
+                        .addComponent(btnCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBorrar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTitulo)
-                            .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBorrar)
-                    .addComponent(jLabel2))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(97, 97, 97)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDevolver)
                     .addComponent(btnCancelar)
                     .addComponent(btnBorrar))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,7 +157,16 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-        // TODO add your handling code here:
+        String titulo = txtTitulo.getText();
+        String id = txtId.getText();
+
+        if (!titulo.isEmpty() && !id.isEmpty()) {
+            // Si ambos campos tienen información, muestra el mensaje de devolución exitosa
+            JOptionPane.showMessageDialog(this, "Libro devuelto correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Si falta información en alguno de los campos, muestra un mensaje de error
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el ID y el título del libro", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -168,7 +184,7 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
         this.limpiarCampos();
         ((Principal) getTopLevelAncestor()).mostrarBotones(true);
     }//GEN-LAST:event_formInternalFrameClosing
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         this.txtId.setText("");
         this.txtTitulo.setText("");
     }

@@ -21,7 +21,7 @@ import ec.edu.ups.practica_4_justin_cuji.modelo.Biblioteca;
  */
 public class Principal extends javax.swing.JFrame {
 
-    // Controladores
+    /// Controladores
     private Usuario_Controlador usuarioControlador;
     private Biblioteca_Controlador biblioteca_Controlador;
     private Prestamo_Controlador prestamo_Controlador;
@@ -47,8 +47,7 @@ public class Principal extends javax.swing.JFrame {
         usuarioControlador = new Usuario_Controlador(biblioteca);
         biblioteca_Controlador = new Biblioteca_Controlador(biblioteca);
         prestamo_Controlador = new Prestamo_Controlador();
-        libro_Controlador = new Libro_Controlador();
-
+        libro_Controlador = new Libro_Controlador(usuarioControlador); // <-- Aquí se inicializa con usuarioControlador
     }
 
     /**
@@ -179,7 +178,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrestar_LibrosActionPerformed
 
     private void btnDevolver_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolver_LibroActionPerformed
-        // TODO add your handling code here:
+        mostrarBotones(false);
+        if (devolver_libro == null){
+            devolver_libro = new Devolver_Libro(usuarioControlador, libro_Controlador);
+            desktopPane.add(devolver_libro);
+        }
+        devolver_libro.setVisible(true);
     }//GEN-LAST:event_btnDevolver_LibroActionPerformed
     public void mostrarBotones(boolean mostrar) {
         btnCrear_Usuario.setVisible(mostrar);
