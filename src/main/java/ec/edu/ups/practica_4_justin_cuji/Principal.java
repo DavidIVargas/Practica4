@@ -5,6 +5,7 @@
 package ec.edu.ups.practica_4_justin_cuji;
 
 import ec.edu.ups.practica_4_justin_cuji.controlador.Biblioteca_Controlador;
+import ec.edu.ups.practica_4_justin_cuji.controlador.Libro_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.controlador.Prestamo_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.vista.Agregar_Libro;
@@ -24,6 +25,7 @@ public class Principal extends javax.swing.JFrame {
     private Usuario_Controlador usuarioControlador;
     private Biblioteca_Controlador biblioteca_Controlador;
     private Prestamo_Controlador prestamo_Controlador;
+    private Libro_Controlador libro_Controlador;
 
     // Ventanas
     private Crear_Usuario ventanaCrearUsuario;
@@ -45,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         usuarioControlador = new Usuario_Controlador(biblioteca);
         biblioteca_Controlador = new Biblioteca_Controlador(biblioteca);
         prestamo_Controlador = new Prestamo_Controlador();
+        libro_Controlador = new Libro_Controlador();
         
     }
 
@@ -150,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
     private void btnAgregar_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_LibroActionPerformed
         mostrarBotones(false);
         if (agregar_Libro == null) {
-            agregar_Libro = new Agregar_Libro(usuarioControlador);
+            agregar_Libro = new Agregar_Libro(usuarioControlador, libro_Controlador);
             desktopPane.add(agregar_Libro);
         }
         agregar_Libro.setVisible(true);
