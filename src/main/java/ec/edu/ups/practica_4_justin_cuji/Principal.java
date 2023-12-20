@@ -171,7 +171,8 @@ public class Principal extends javax.swing.JFrame {
     private void btnPrestar_LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestar_LibrosActionPerformed
         mostrarBotones(false);
         if (prestar_Libro == null) {
-            prestar_Libro = new Prestar_Libro();
+            // Aquí proporciona los controladores necesarios al constructor de Prestar_Libro
+            prestar_Libro = new Prestar_Libro(usuarioControlador, libro_Controlador);
             desktopPane.add(prestar_Libro);
         }
         prestar_Libro.setVisible(true);

@@ -170,7 +170,6 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
     private void limpiarCampos(){
         this.txtId.setText("");
-        this.txtId.setText("");
         this.txtTitulo.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
