@@ -12,6 +12,7 @@ import ec.edu.ups.practica_4_justin_cuji.vista.Buscar_libro;
 import ec.edu.ups.practica_4_justin_cuji.vista.Crear_Usuario;
 import ec.edu.ups.practica_4_justin_cuji.vista.Devolver_Libro;
 import ec.edu.ups.practica_4_justin_cuji.vista.Prestar_Libro;
+import ec.edu.ups.practica_4_justin_cuji.modelo.Biblioteca;
 
 /**
  *
@@ -19,11 +20,12 @@ import ec.edu.ups.practica_4_justin_cuji.vista.Prestar_Libro;
  */
 public class Principal extends javax.swing.JFrame {
 
-    //Controladores
+    // Controladores
     private Usuario_Controlador usuarioControlador;
     private Biblioteca_Controlador biblioteca_Controlador;
     private Prestamo_Controlador prestamo_Controlador;
-    //Ventanas
+
+    // Ventanas
     private Crear_Usuario ventanaCrearUsuario;
     private Agregar_Libro agregar_Libro;
     private Buscar_libro buscar_libro;
@@ -35,7 +37,15 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        String nombreBiblioteca = "Nombre de la biblioteca";
+        String direccionBiblioteca = "Dirección de la biblioteca";
+        Biblioteca biblioteca = new Biblioteca(nombreBiblioteca, direccionBiblioteca);
 
+        // Inicialización de los controladores y ventanas
+        usuarioControlador = new Usuario_Controlador(biblioteca);
+        biblioteca_Controlador = new Biblioteca_Controlador(biblioteca);
+        prestamo_Controlador = new Prestamo_Controlador();
+        
     }
 
     /**

@@ -20,8 +20,6 @@ public class Usuario_Controlador {
 
     public Usuario_Controlador(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
-    }
-    public Usuario_Controlador() {
         this.listaUsuarios = new ArrayList<>();
     }
     public void guardarUsuario(Usuario usuario) {
