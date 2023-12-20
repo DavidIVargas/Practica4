@@ -7,6 +7,7 @@ package ec.edu.ups.practica_4_justin_cuji.vista;
 import ec.edu.ups.practica_4_justin_cuji.Principal;
 import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.modelo.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -167,25 +168,28 @@ public class Crear_Usuario extends javax.swing.JInternalFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         String nombre = txtNombre.getText();
-        String id = txtId.getText();
-        String correo = txtCorreo.getText();
+    String id = txtId.getText();
+    String correo = txtCorreo.getText();
 
-        // Verificar si los campos están vacíos antes de crear un nuevo usuario
-        if (nombre.isEmpty() || id.isEmpty() || correo.isEmpty()) {
-            System.out.println("Por favor, complete todos los campos.");
+    // Verificar si los campos están vacíos antes de crear un nuevo usuario
+    if (nombre.isEmpty() || id.isEmpty() || correo.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+    } else {
+        Usuario nuevoUsuario = new Usuario(nombre, id, correo);
+
+        // Asumiendo que usuario_Controlador es una instancia de Usuario_Controlador
+        if (usuario_Controlador != null) {
+            usuario_Controlador.guardarUsuario(nuevoUsuario);
+            System.out.println("Usuario creado exitosamente: " + nuevoUsuario);
+
+            // Mostrar ventana emergente indicando éxito
+            JOptionPane.showMessageDialog(this, "El usuario ha sido creado exitosamente.", "Usuario creado", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            Usuario nuevoUsuario = new Usuario(nombre, id, correo);
-
-            // Asumiendo que usuario_Controlador es una instancia de Usuario_Controlador
-            if (usuario_Controlador != null) {
-                usuario_Controlador.guardarUsuario(nuevoUsuario);
-                System.out.println("Usuario creado exitosamente: " + nuevoUsuario);
-            } else {
-                System.out.println("Error: El controlador de usuario no está disponible.");
-            }
-
-            limpiarCampos();
+            System.out.println("Error: El controlador de usuario no está disponible.");
         }
+
+        limpiarCampos();
+    }
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

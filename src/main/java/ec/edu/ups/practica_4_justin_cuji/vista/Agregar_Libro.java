@@ -12,7 +12,9 @@ import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
  * @author davidvargas
  */
 public class Agregar_Libro extends javax.swing.JInternalFrame {
+
     private Usuario_Controlador usuario_Controlador;
+
     /**
      * Creates new form Agregar_Libro
      */
@@ -185,7 +187,7 @@ public class Agregar_Libro extends javax.swing.JInternalFrame {
         this.limpiarCampos();
         ((Principal) getTopLevelAncestor()).mostrarBotones(true);
     }//GEN-LAST:event_formInternalFrameClosed
-    private void limpiarCampos(){
+    private void limpiarCampos() {
         this.txtAnio.setText("");
         this.txtAutor.setText("");
         this.txtDisponible.setText("");

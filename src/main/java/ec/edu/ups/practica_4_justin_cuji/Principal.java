@@ -35,7 +35,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        
+
     }
 
     /**
@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        desktopPane = new javax.swing.JDesktopPane();
         btnCrear_Usuario = new javax.swing.JButton();
         btnAgregar_Libro = new javax.swing.JButton();
         btnBuscar_Libro = new javax.swing.JButton();
@@ -55,8 +55,8 @@ public class Principal extends javax.swing.JFrame {
         btnDevolver_Libro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sistema de Gestion Biblioteca", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 3, 14))); // NOI18N
+        setName("frame2"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(878, 654));
 
         btnCrear_Usuario.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnCrear_Usuario.setText("Crear Usuario");
@@ -65,6 +65,8 @@ public class Principal extends javax.swing.JFrame {
                 btnCrear_UsuarioActionPerformed(evt);
             }
         });
+        desktopPane.add(btnCrear_Usuario);
+        btnCrear_Usuario.setBounds(10, 40, 145, 56);
 
         btnAgregar_Libro.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnAgregar_Libro.setText("Agregar Libros");
@@ -73,6 +75,8 @@ public class Principal extends javax.swing.JFrame {
                 btnAgregar_LibroActionPerformed(evt);
             }
         });
+        desktopPane.add(btnAgregar_Libro);
+        btnAgregar_Libro.setBounds(170, 40, 135, 56);
 
         btnBuscar_Libro.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnBuscar_Libro.setText("Buscar Libros");
@@ -81,6 +85,8 @@ public class Principal extends javax.swing.JFrame {
                 btnBuscar_LibroActionPerformed(evt);
             }
         });
+        desktopPane.add(btnBuscar_Libro);
+        btnBuscar_Libro.setBounds(330, 40, 136, 56);
 
         btnPrestar_Libros.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnPrestar_Libros.setText("Prestar Libros");
@@ -89,6 +95,8 @@ public class Principal extends javax.swing.JFrame {
                 btnPrestar_LibrosActionPerformed(evt);
             }
         });
+        desktopPane.add(btnPrestar_Libros);
+        btnPrestar_Libros.setBounds(480, 40, 130, 56);
 
         btnDevolver_Libro.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnDevolver_Libro.setText("Devolver Libro");
@@ -97,72 +105,45 @@ public class Principal extends javax.swing.JFrame {
                 btnDevolver_LibroActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(btnCrear_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAgregar_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPrestar_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnDevolver_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnCrear_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrestar_Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDevolver_Libro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(329, Short.MAX_VALUE))
-        );
+        desktopPane.add(btnDevolver_Libro);
+        btnDevolver_Libro.setBounds(640, 40, 151, 56);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrear_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear_UsuarioActionPerformed
-    mostrarBotones(false); // Oculta los botones
-    if(ventanaCrearUsuario == null){
-        ventanaCrearUsuario = new Crear_Usuario(usuarioControlador);
-        jPanel1.add(ventanaCrearUsuario);
-    }
-    ventanaCrearUsuario.setVisible(true);
+        mostrarBotones(false); // Oculta los botones
+        if (ventanaCrearUsuario == null) {
+            ventanaCrearUsuario = new Crear_Usuario(usuarioControlador);
+            desktopPane.add(ventanaCrearUsuario);
+        }
+        ventanaCrearUsuario.setVisible(true);
     }//GEN-LAST:event_btnCrear_UsuarioActionPerformed
 
     private void btnAgregar_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_LibroActionPerformed
         mostrarBotones(false);
-        if(agregar_Libro == null){
-        agregar_Libro = new Agregar_Libro(usuarioControlador);
-        jPanel1.add(agregar_Libro);
-    }
-    agregar_Libro.setVisible(true);
+        if (agregar_Libro == null) {
+            agregar_Libro = new Agregar_Libro(usuarioControlador);
+            desktopPane.add(agregar_Libro);
+        }
+        agregar_Libro.setVisible(true);
     }//GEN-LAST:event_btnAgregar_LibroActionPerformed
 
     private void btnBuscar_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_LibroActionPerformed
@@ -177,12 +158,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDevolver_LibroActionPerformed
     public void mostrarBotones(boolean mostrar) {
-    btnCrear_Usuario.setVisible(mostrar);
-    btnAgregar_Libro.setVisible(mostrar);
-    btnBuscar_Libro.setVisible(mostrar);
-    btnPrestar_Libros.setVisible(mostrar);
-    btnDevolver_Libro.setVisible(mostrar);
-}
+        btnCrear_Usuario.setVisible(mostrar);
+        btnAgregar_Libro.setVisible(mostrar);
+        btnBuscar_Libro.setVisible(mostrar);
+        btnPrestar_Libros.setVisible(mostrar);
+        btnDevolver_Libro.setVisible(mostrar);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -224,6 +206,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnCrear_Usuario;
     private javax.swing.JButton btnDevolver_Libro;
     private javax.swing.JButton btnPrestar_Libros;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JDesktopPane desktopPane;
     // End of variables declaration//GEN-END:variables
 }
