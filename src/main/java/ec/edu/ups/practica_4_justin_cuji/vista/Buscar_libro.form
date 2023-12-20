@@ -57,7 +57,6 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="txtDisponible" max="32767" attributes="0"/>
                       <Component id="txtAnio" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtAutor" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtTitulo" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -65,6 +64,7 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="txtAutor" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -117,16 +117,19 @@
         <Component class="javax.swing.JTextField" name="txtAutor">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Ingrese el Autor del libro a buscar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAnio">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Ingrese el a&#xf1;o del libro a buscar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDisponible">
           <Properties>
             <Property name="text" type="java.lang.String" value="Disponible"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscar">

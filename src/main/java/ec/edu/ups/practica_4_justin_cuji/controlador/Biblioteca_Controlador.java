@@ -7,7 +7,6 @@ package ec.edu.ups.practica_4_justin_cuji.controlador;
 import ec.edu.ups.practica_4_justin_cuji.modelo.Libro;
 import ec.edu.ups.practica_4_justin_cuji.modelo.Biblioteca;
 import ec.edu.ups.practica_4_justin_cuji.modelo.Usuario;
-import ec.edu.ups.practica_4_justin_cuji.modelo.Persona;
 
 /**
  *

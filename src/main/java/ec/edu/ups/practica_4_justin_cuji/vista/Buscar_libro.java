@@ -5,7 +5,10 @@
 package ec.edu.ups.practica_4_justin_cuji.vista;
 
 import ec.edu.ups.practica_4_justin_cuji.Principal;
+import ec.edu.ups.practica_4_justin_cuji.controlador.Libro_Controlador;
 import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
+import ec.edu.ups.practica_4_justin_cuji.modelo.Libro;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +17,14 @@ import ec.edu.ups.practica_4_justin_cuji.controlador.Usuario_Controlador;
 public class Buscar_libro extends javax.swing.JInternalFrame {
 
     private Usuario_Controlador usuario_Controlador;
+    private Libro_Controlador libro_Controlador;
 
     /**
      * Creates new form Buscar_libro
      */
-    public Buscar_libro(Usuario_Controlador usuario_Controlador) {
+    public Buscar_libro(Libro_Controlador libro_Controlador) {
         initComponents();
-        this.usuario_Controlador = usuario_Controlador;
+        this.libro_Controlador = libro_Controlador;
     }
 
     /**
@@ -71,10 +75,13 @@ public class Buscar_libro extends javax.swing.JInternalFrame {
         txtTitulo.setToolTipText("Ingrese el titulo del libro a buscar");
 
         txtAutor.setToolTipText("Ingrese el Autor del libro a buscar");
+        txtAutor.setEnabled(false);
 
         txtAnio.setToolTipText("Ingrese el año del libro a buscar");
+        txtAnio.setEnabled(false);
 
         txtDisponible.setText("Disponible");
+        txtDisponible.setEnabled(false);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,13 +119,13 @@ public class Buscar_libro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtDisponible)
                     .addComponent(txtAnio, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAutor, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(btnBuscar)
                         .addGap(30, 30, 30)
-                        .addComponent(btnCancelar)))
+                        .addComponent(btnCancelar))
+                    .addComponent(txtAutor, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBorrar)
@@ -167,7 +174,22 @@ public class Buscar_libro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        String titulo = txtTitulo.getText();
+
+        if (!titulo.isEmpty() && libro_Controlador != null) {
+            Libro libroEncontrado = libro_Controlador.buscarLibroPorTitulo(titulo);
+
+            if (libroEncontrado != null) {
+                txtAutor.setText(libroEncontrado.getAutor());
+                txtAnio.setText(String.valueOf(libroEncontrado.getAño()));
+                txtDisponible.setText(libroEncontrado.isDisponible() ? "Disponible" : "No Disponible");
+            } else {
+                // Si el libro no existe, abre una ventana emergente
+                JOptionPane.showMessageDialog(this, "El libro no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese un título válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

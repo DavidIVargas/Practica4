@@ -23,6 +23,13 @@ public class Libro_Controlador {
         listaLibros.add(libro);
         System.out.println("Libro guardado en la base de datos.");
     }
-
-    // Otros métodos para gestionar los libros, como buscar, eliminar, etc.
+    
+    public Libro buscarLibroPorTitulo(String titulo) {
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                return libro;
+            }
+        }
+        return null;
+    }
 }

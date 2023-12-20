@@ -48,7 +48,7 @@ public class Principal extends javax.swing.JFrame {
         biblioteca_Controlador = new Biblioteca_Controlador(biblioteca);
         prestamo_Controlador = new Prestamo_Controlador();
         libro_Controlador = new Libro_Controlador();
-        
+
     }
 
     /**
@@ -160,11 +160,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregar_LibroActionPerformed
 
     private void btnBuscar_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar_LibroActionPerformed
-        // TODO add your handling code here:
+        mostrarBotones(false);
+        if (buscar_libro == null) {
+            buscar_libro = new Buscar_libro(libro_Controlador); // Asegúrate de pasar el controlador aquí
+            desktopPane.add(buscar_libro);
+        }
+        buscar_libro.setVisible(true);
     }//GEN-LAST:event_btnBuscar_LibroActionPerformed
 
     private void btnPrestar_LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestar_LibrosActionPerformed
-        // TODO add your handling code here:
+        mostrarBotones(false);
+        if (prestar_Libro == null) {
+            prestar_Libro = new Prestar_Libro();
+            desktopPane.add(prestar_Libro);
+        }
+        prestar_Libro.setVisible(true);
     }//GEN-LAST:event_btnPrestar_LibrosActionPerformed
 
     private void btnDevolver_LibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolver_LibroActionPerformed
