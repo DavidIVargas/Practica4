@@ -167,6 +167,7 @@ public class Devolver_Libro extends javax.swing.JInternalFrame {
             // Si falta información en alguno de los campos, muestra un mensaje de error
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el ID y el título del libro", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        this.limpiarCampos();
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
